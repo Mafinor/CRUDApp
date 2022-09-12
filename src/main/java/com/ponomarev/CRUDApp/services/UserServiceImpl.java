@@ -1,6 +1,6 @@
 package com.ponomarev.CRUDApp.services;
 
-import com.ponomarev.CRUDApp.dao.UserDAO;
+import com.ponomarev.CRUDApp.dao.UserDaoImpl;
 import com.ponomarev.CRUDApp.exceptions.NoSuchUserException;
 import com.ponomarev.CRUDApp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +14,27 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    private final UserDAO userDAO;
+    private final UserDaoImpl userDaoImpl;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public UserServiceImpl(UserDaoImpl userDaoImpl) {
+        this.userDaoImpl = userDaoImpl;
     }
 
     @Override
     public List<User> findAll() {
-        return userDAO.findAll();
+        return userDaoImpl.findAll();
     }
 
     @Override
     public User findById(Long id) {
-        return userDAO.findById(id).orElse(null);
+        return userDaoImpl.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
     public User save(User user) {
-        return userDAO.save(user);
+        return userDaoImpl.save(user);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     public User update(Long id, User updatedUser) {
         User user;
         try {
-            user = userDAO.update(id, updatedUser);
+            user = userDaoImpl.update(id, updatedUser);
         } catch (NoSuchUserException e) {
             return null;
         }
@@ -51,9 +51,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void deleteByUd(Long id) {
+    public void deleteById(Long id) {
         try {
-            userDAO.deleteById(id);
+            userDaoImpl.deleteById(id);
         } catch (NoSuchUserException ignore) {
         }
     }

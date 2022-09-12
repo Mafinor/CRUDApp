@@ -9,5 +9,5 @@ public interface UserService {
     User findById(Long id);
     User save(User user);
     User update(Long id, User updatedUser);
-    void deleteByUd(Long id);
+    void deleteById(Long id);
 }

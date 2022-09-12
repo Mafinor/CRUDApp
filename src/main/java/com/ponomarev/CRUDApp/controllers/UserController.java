@@ -1,7 +1,5 @@
 package com.ponomarev.CRUDApp.controllers;
 
-import com.ponomarev.CRUDApp.dao.DAO;
-import com.ponomarev.CRUDApp.dao.UserDAO;
 import com.ponomarev.CRUDApp.models.User;
 import com.ponomarev.CRUDApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +55,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id) {
-        userService.deleteByUd(id);
+        userService.deleteById(id);
         return "redirect:/users";
     }
 }

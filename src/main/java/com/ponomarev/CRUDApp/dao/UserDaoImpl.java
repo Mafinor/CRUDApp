@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class UserDAO implements DAO<User, Long> {
+public class UserDaoImpl implements DAO<User, Long> {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -32,12 +32,8 @@ public class UserDAO implements DAO<User, Long> {
 
     @Override()
     public User update(Long id, User object) throws NoSuchUserException {
-        User user = findById(id).orElseThrow(NoSuchUserException::new);
-        user.setUsername(object.getUsername());
-        user.setFirstName(object.getFirstName());
-        user.setLastName(object.getLastName());
-        user.setEmail(object.getEmail());
-        return user;
+       findById(id).orElseThrow(NoSuchUserException::new);
+       return entityManager.merge(object);
     }
 
     @Override
