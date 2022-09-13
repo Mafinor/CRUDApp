@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class UserDaoImpl implements DAO<User, Long> {
+public class UserUserDaoImpl implements UserDao<User, Long> {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -31,8 +31,8 @@ public class UserDaoImpl implements DAO<User, Long> {
     }
 
     @Override()
-    public User update(Long id, User object) throws NoSuchUserException {
-       findById(id).orElseThrow(NoSuchUserException::new);
+    public User update(User object) throws NoSuchUserException {
+       findById(object.getId()).orElseThrow(NoSuchUserException::new);
        return entityManager.merge(object);
     }
 

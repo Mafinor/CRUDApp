@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
-        User updatedUser = userService.update(id, user);
+    public String update(@ModelAttribute("user") User user) {
+        User updatedUser = userService.update(user);
         if (updatedUser == null) {
             return "/error";
         }
