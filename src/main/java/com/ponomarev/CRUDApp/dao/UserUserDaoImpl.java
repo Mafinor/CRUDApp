@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Repository
 public class UserUserDaoImpl implements UserDao<User, Long> {
-
     @PersistenceContext
     private EntityManager entityManager;
 

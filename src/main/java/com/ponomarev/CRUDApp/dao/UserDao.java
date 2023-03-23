@@ -12,3 +12,4 @@ public interface UserDao<T, K extends Number> {
     T update(T updatedObject) throws NoSuchUserException;
     void deleteById(K id) throws NoSuchUserException;
 }
+

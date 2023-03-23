@@ -1,6 +1,7 @@
 package com.ponomarev.CRUDApp.exceptions;
 
 public class NoSuchUserException extends Exception {
+
     public NoSuchUserException() {
     }
 
