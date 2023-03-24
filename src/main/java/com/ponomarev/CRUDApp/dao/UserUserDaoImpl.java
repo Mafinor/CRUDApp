@@ -30,9 +30,9 @@ public class UserUserDaoImpl implements UserDao<User, Long> {
     }
 
     @Override()
-    public User update(User object) throws NoSuchUserException {
-       findById(object.getId()).orElseThrow(NoSuchUserException::new);
-       return entityManager.merge(object);
+    public User update(User user) throws NoSuchUserException {
+       findById(user.getId()).orElseThrow(NoSuchUserException::new);
+       return entityManager.merge(user);
     }
 
     @Override
